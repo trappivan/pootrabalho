@@ -19,13 +19,9 @@ public class Professor {
     private long id;
     private String nome;
 
-    @OneToMany
-    private List<Disciplina> disciplina;
     public Professor(String nome){
         this.nome = nome;
     }
 
-    public Professor(List<Disciplina> disciplina) {
-        this.disciplina = disciplina;
-    }
+
 }

@@ -20,12 +20,8 @@ public class Curso {
 
     private String nome;
 
-    @ManyToMany
-    private List<Disciplina> Materias;
-
-    public Curso(String nome, List<Disciplina> materias){
+    public Curso(String nome){
         this.nome = nome;
-        this.Materias = materias;
     }
 
 }

@@ -41,21 +41,23 @@ public class SpringjpademoApplication {
 			Professor ana = repository.save(new Professor("Ana Paula"));
 			Professor rafa = repository.save(new Professor("Rafael"));
 
-			Disciplina horario1 = disciplinaRepository.save(new Disciplina("POO II",  "20:50 - 22:30", "QUA",lea));
+			Curso engSoft = cursoRepository.save(new Curso("Engenharia de Software"));
+			Curso sistemasInformacao = cursoRepository.save(new Curso("Sistemas de informação"));
 
-			Disciplina horario2 =disciplinaRepository.save(new Disciplina("POO II",  "18:50 - 20:30", "SEX",lea));
-			lea.setDisciplina(List.of(horario2));
-			repository.save(lea);
-			Disciplina horario3 =disciplinaRepository.save(new Disciplina("SOP",  "18:50 - 20:30", "TER",mar));
-			Disciplina horario4 =disciplinaRepository.save(new Disciplina("SOP",  "20:50 - 22:30", "SEX",mar));
+			Disciplina horario1 = disciplinaRepository.save(new Disciplina("POO II",  "20:50 - 22:30", "QUA",lea, engSoft));
+
+			Disciplina horario2 =disciplinaRepository.save(new Disciplina("POO II",  "18:50 - 20:30", "SEX",lea, engSoft));
+
+			Disciplina horario3 =disciplinaRepository.save(new Disciplina("SOP",  "18:50 - 20:30", "TER",mar, engSoft));
+			Disciplina horario4 =disciplinaRepository.save(new Disciplina("SOP",  "20:50 - 22:30", "SEX",mar, engSoft));
 
 
-			Disciplina horario5 =disciplinaRepository.save(new Disciplina("VIVEX III",  "19:50 - 22:30", "SEG",lei));
+			Disciplina horario5 =disciplinaRepository.save(new Disciplina("VIVEX III",  "19:50 - 22:30", "SEG",lei, engSoft));
 
-			Disciplina horario6 =disciplinaRepository.save(new Disciplina("ECSI",  "19:50 - 20:30", "QUA",van));
-			Disciplina horario7 =disciplinaRepository.save(new Disciplina("ECSI",  "19:50 - 20:30", "QUI",van));
+			Disciplina horario6 =disciplinaRepository.save(new Disciplina("ECSI",  "19:50 - 20:30", "QUA",van, engSoft));
+			Disciplina horario7 =disciplinaRepository.save(new Disciplina("ECSI",  "19:50 - 20:30", "QUI",van, engSoft));
 
-			Disciplina horario8 =disciplinaRepository.save(new Disciplina("EIXO IV",  "08:30 - 10:15", "SAB",ana));
+			Disciplina horario8 =disciplinaRepository.save(new Disciplina("EIXO IV",  "08:30 - 10:15", "SAB",ana, engSoft));
 
 			List<Disciplina> horarios = new ArrayList<>();
 			horarios.add(horario1);
@@ -67,30 +69,53 @@ public class SpringjpademoApplication {
 			horarios.add(horario7);
 			horarios.add(horario8);
 
-			Curso engSoft = cursoRepository.save(new Curso("Engenharia de Software", horarios));
+
 			/*
 			* Salvar disciplinas pro curso e professores para as disciplinas
 			* */
 
 
-			System.out.println("Criando classes de horário, professores e curso de sistemas de informação" + engSoft);
 
-			Disciplina horarioSist1 = disciplinaRepository.save(new Disciplina("APSI I", "20:30 - 22:30", "TER", rafa));
 
+			Disciplina horarioSist1 = disciplinaRepository.save(new Disciplina("APSI I", "20:30 - 22:30", "TER", rafa, sistemasInformacao));
+			Disciplina horarioSist2 = disciplinaRepository.save(new Disciplina("POO II",  "20:50 - 22:30", "QUA",lea, sistemasInformacao));
+
+			Disciplina horarioSist3 =disciplinaRepository.save(new Disciplina("POO II",  "18:50 - 20:30", "SEX",lea, sistemasInformacao));
+
+			Disciplina horarioSist4 =disciplinaRepository.save(new Disciplina("SOP",  "18:50 - 20:30", "TER",mar, sistemasInformacao));
+			Disciplina horarioSist5 =disciplinaRepository.save(new Disciplina("SOP",  "20:50 - 22:30", "SEX",mar, sistemasInformacao));
+
+
+			Disciplina horarioSist6 =disciplinaRepository.save(new Disciplina("VIVEX III",  "19:50 - 22:30", "SEG",lei, sistemasInformacao));
+
+			Disciplina horarioSist7 =disciplinaRepository.save(new Disciplina("ECSI",  "19:50 - 20:30", "QUA",van, sistemasInformacao));
+			Disciplina horarioSist8 =disciplinaRepository.save(new Disciplina("ECSI",  "19:50 - 20:30", "QUI",van, sistemasInformacao));
+
+			Disciplina horarioSist9 =disciplinaRepository.save(new Disciplina("EIXO IV",  "08:30 - 10:15", "SAB",ana, sistemasInformacao));
 			List<Disciplina> horasSist =  new ArrayList<>();
-			horasSist.add(horario5);
-			horasSist.add(horario3);
-			horasSist.add(horario6);
-			horasSist.add(horario1);
-			horasSist.add(horario7);
 			horasSist.add(horarioSist1);
-			horasSist.add(horario2);
-			horasSist.add(horario4);
-			horasSist.add(horario8);
+			horasSist.add(horarioSist2);
+			horasSist.add(horarioSist3);
+			horasSist.add(horarioSist4);
+			horasSist.add(horarioSist5);
+			horasSist.add(horarioSist1);
+			horasSist.add(horarioSist6);
+			horasSist.add(horarioSist7);
+			horasSist.add(horarioSist8);
+			horasSist.add(horarioSist9);
 
-			Curso sistemasInformacao = cursoRepository.save(new Curso("Sistemas de informação",horasSist));
 
-			System.out.println("Curso sistemas de informação horario: "+sistemasInformacao);
+
+
+			List<Disciplina> engSoftware = disciplinaRepository.findDisciplinaByCurso(engSoft);
+			System.out.println("Imprimindo todos os horarios de engenharia de software!");
+			engSoftware.forEach(System.out::println);
+			System.out.println("--------------------------------------------------------------");
+			System.out.println("Imprimindo todos os horarios de Sistemas de informação!");
+			List<Disciplina> sistemasInfo = disciplinaRepository.findDisciplinaByCurso(sistemasInformacao);
+			sistemasInfo.forEach(System.out::println);
+
+
 			/*
 			repository.save(new Professor("Leanderson"));
 			repository.save(new Professor("Paulo"));

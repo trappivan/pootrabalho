@@ -26,13 +26,15 @@ public class Disciplina {
     @ManyToOne
     private Professor professor;
 
-    @ManyToMany
-    private List<Curso> curso;
-    public Disciplina(String nome,String horario, String diaSemana, Professor professor){
+
+    @ManyToOne
+    private Curso curso;
+    public Disciplina(String nome,String horario, String diaSemana, Professor professor, Curso curso){
         this.nome = nome;
         this.horario = horario;
         this.diaSemana = diaSemana;
         this.professor = professor;
+        this.curso = curso;
     }
 
 }
