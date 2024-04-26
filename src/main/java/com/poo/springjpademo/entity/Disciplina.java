@@ -21,6 +21,8 @@ public class Disciplina {
     private long id;
     private String nome;
 
+
+
     private String diaSemana;
     private String horario;
     @ManyToOne
